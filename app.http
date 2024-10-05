@@ -1,0 +1,120 @@
+POST http://localhost:3000/user/register
+Content-Type: application/json
+
+{
+    "name":"Tharun Ganji",
+    "email":"tharun.ganji@gmail.com",
+    "password":"123456"
+}
+
+###
+POST http://localhost:3000/user/login 
+Content-Type: application/json
+
+{
+    "email":"tharun.ganji@gmail.com",
+    "password":"123456"
+}
+
+###
+GET http://localhost:3000/user/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzAwMjJiYWM0ZGZmZjQ4MWJhNGU5ZjEiLCJpYXQiOjE3MjgwNzQ1OTB9.Uy-zfV4nAaCWO4vjxPVkKVJZd3IR1sLZuiX8y0rKHNE
+
+###
+PUT http://localhost:3000/user/profile 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzAwMjJiYWM0ZGZmZjQ4MWJhNGU5ZjEiLCJpYXQiOjE3MjgwNzQ1OTB9.Uy-zfV4nAaCWO4vjxPVkKVJZd3IR1sLZuiX8y0rKHNE
+
+{
+    "name":"Tharun Ganji"
+}
+
+###
+
+POST http://localhost:3000/restaurants
+Content-Type: application/json
+
+{
+  "name": "Spice Garden",
+  "location": "123 Main Street, Nalgonda, Telangana"
+}
+
+###
+POST http://localhost:3000/restaurants/67010858b8e9233c3de6e09b/menu
+Content-Type: application/json
+
+{
+  "category": "beverages",
+  "name": "Cold Coffee",
+  "description": "Chilled coffee blended with milk and ice.",
+  "price": 120,
+  "available": true
+}
+
+###
+PUT http://localhost:3000/restaurants/67010858b8e9233c3de6e09b
+Content-Type: application/json
+
+{
+    "location":"kondapur Road no 4,Hyderabad"
+}
+
+###
+PUT http://localhost:3000/restaurants/6700efb8dc47383fd74167f5/menu/6700efefdc47383fd74167fd
+Content-Type: application/json
+
+{
+    "category":"starters",
+    "price":229  
+}
+
+###
+POST http://localhost:3000/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzAwMjJiYWM0ZGZmZjQ4MWJhNGU5ZjEiLCJpYXQiOjE3MjgwNzQ1OTB9.Uy-zfV4nAaCWO4vjxPVkKVJZd3IR1sLZuiX8y0rKHNE
+
+
+{
+    "restaurantId":"67010858b8e9233c3de6e09b",
+    "items":[
+        {
+            "menuItem":"67010896b8e9233c3de6e0a5",
+            "quantity":3
+        },
+        {
+            "menuItem":"6701089db8e9233c3de6e0ac",
+            "quantity":5
+        }
+    ],
+    "deliveryAddress":"S1-B-146,Hyderabad"
+}
+
+###
+GET http://localhost:3000/orders/67010e6e8963bcd694d77e22
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzAwMjJiYWM0ZGZmZjQ4MWJhNGU5ZjEiLCJpYXQiOjE3MjgwNzQ1OTB9.Uy-zfV4nAaCWO4vjxPVkKVJZd3IR1sLZuiX8y0rKHNE
+
+###
+PUT http://localhost:3000/orders/67010e6e8963bcd694d77e22/status
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzAwMjJiYWM0ZGZmZjQ4MWJhNGU5ZjEiLCJpYXQiOjE3MjgwNzQ1OTB9.Uy-zfV4nAaCWO4vjxPVkKVJZd3IR1sLZuiX8y0rKHNE
+
+{
+    "status":"In Progress"
+}
+
+###
+GET http://localhost:3000/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzAwMjJiYWM0ZGZmZjQ4MWJhNGU5ZjEiLCJpYXQiOjE3MjgwNzQ1OTB9.Uy-zfV4nAaCWO4vjxPVkKVJZd3IR1sLZuiX8y0rKHNE
+
+###
+PUT http://localhost:3000/orders/67010e6e8963bcd694d77e22/track
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzAwMjJiYWM0ZGZmZjQ4MWJhNGU5ZjEiLCJpYXQiOjE3MjgwNzQ1OTB9.Uy-zfV4nAaCWO4vjxPVkKVJZd3IR1sLZuiX8y0rKHNE
+
+{
+    "status":"Out For Delivery"
+}
+
+###
+GET http://localhost:3000/orders/67010e6e8963bcd694d77e22/track
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzAwMjJiYWM0ZGZmZjQ4MWJhNGU5ZjEiLCJpYXQiOjE3MjgwNzQ1OTB9.Uy-zfV4nAaCWO4vjxPVkKVJZd3IR1sLZuiX8y0rKHNE
